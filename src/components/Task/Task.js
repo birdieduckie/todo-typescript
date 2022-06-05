@@ -1,19 +1,11 @@
-import { Container, Close, Text, Check } from "./styled"
+import { Container, Close, Text, Check } from './styled'
 
-export const Task = ({ id, value, isChecked, handleDeleteTask, handleCompleteTask }) => {
-  const deleteTask = () => {
-    handleDeleteTask(id)
-  }
-
-  const changeStatus = () => {
-    handleCompleteTask(id)
-  }
-
+export const Task = ({ id, value }) => {
   return (
     <Container>
-      <Check checked={isChecked} onChange={changeStatus}></Check>
-      <Text>{value}</Text>     
-      <Close type='danger' onClick={deleteTask}>Удалить</Close>
+      <Check></Check>
+      <Text>{value}</Text>
+      <Close type='danger'>Удалить</Close>
     </Container>
   )
 }

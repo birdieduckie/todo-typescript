@@ -1,9 +1,14 @@
+import React from 'react'
+import { RootState } from "../store";
+import { useAppSelector } from "../hooks/redux";
 
-const sayHi = "hello"
 
  export const App = () => {
+  const {} = useAppSelector(state => state.taskReducer.)
   return (
-  {sayHi}
+    <div> App </div>
+
+  
   );
 }
 
