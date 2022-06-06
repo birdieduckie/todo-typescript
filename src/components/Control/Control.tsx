@@ -5,9 +5,9 @@ import { Container, Field } from './styled'
 export const Control = ({ handleSetTask }) => {
   const [inputValue, setInputValue] = useState('')
 
-  const handleSetInputValue = (event) => {
-    setInputValue(event.target.value)
-  }
+  // const handleSetInputValue = (event) => {
+  //   setInputValue(event.target.value)
+  // }
 
   const setTask = () => {
     handleSetTask(inputValue);
@@ -22,7 +22,7 @@ export const Control = ({ handleSetTask }) => {
 
   return (
     <Container>
-      <Field placeholder='Введите задачу' value={inputValue} onChange={handleSetInputValue} onKeyDown={handleEnter} />
+      <Field placeholder='Введите задачу' value={inputValue} onChange={(event) => setInputValue} onKeyDown={handleEnter} />
       <Button type='primary' onClick={setTask}>Сохранить</Button>
     </Container>
   )
