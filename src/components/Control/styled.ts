@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 
+import { Input } from '../../shared/Input/Input'
+
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 50%;
-  height: 100%;
-  background: white;
+  justify-content: center;
+  padding: 15px;
 
   @media screen and (max-width: 600px) {
     width: 100%;
   }
+`
+
+export const Field = styled(Input)`
+  margin: 0 10px 0 0;
 `

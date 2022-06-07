@@ -1,17 +1,15 @@
-import React from 'react'
-import { RootState } from "../store/store";
-import { useAppSelector } from "../hooks/hooks";
-import { Control } from '../components/Control/Control';
+import { FC } from 'react'
 
+import { Control } from '../components/Control/Control'
+import { Tasks } from '../components/Tasks/Tasks'
 
- export const App = () => {
-  
+interface AppProps {}
+
+export const App: FC<AppProps> = () => {
   return (
-    <Control><div> App </div></Control>
-    
-
-  
-  );
+    <>
+      <Control />
+      <Tasks />
+    </>
+  )
 }
-
-

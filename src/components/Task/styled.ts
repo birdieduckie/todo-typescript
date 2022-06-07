@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Button } from "../../shared/Button/Button";
+import styled from 'styled-components'
 
-export const Check = styled.input.attrs({ type: "checkbox" })`
-`;
+import { Button } from '../../shared/Button/Button'
+
+export const Check = styled.input``
 
 export const Container = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin: 5px 15px;
   height: 100%;
   padding: 12px 16px;
-  border: 2px solid #DEDEE3;
+  border: 2px solid #dedee3;
   border-radius: 4px;
 `
 

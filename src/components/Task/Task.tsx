@@ -1,23 +1,28 @@
-import { useAppDispatch } from '../../hooks/hooks';
+import { FC } from 'react'
+
+import { useAppDispatch } from '../../hooks/store'
+import { deleteTask } from '../../store/reducers/tasksSlice'
+
 import { Container, Close, Text, Check } from './styled'
 
-const dispatch = useAppDispatch();
-
-const deleteTask = () => 
+interface TaskProps {
+  id: number | string
+  text: string
+  checked: boolean
 }
 
-type TaskProps = {
-  id: number;
-  value: string;
-  checked: boolean;
-};
+export const Task: FC<TaskProps> = ({ id, text, checked }) => {
+  const dispatch = useAppDispatch()
 
-export const Task = ({ id, value }: TaskProps) => {
+  const handleDeleteTask = () => dispatch(deleteTask(id))
+
   return (
     <Container>
-      <Check></Check>
-      <Text>{value}</Text>
-      <Close type='danger' onClick>Удалить</Close>
+      <Check type="checkbox" />
+      <Text>{text}</Text>
+      <Close type="reset" onClick={handleDeleteTask}>
+        Удалить
+      </Close>
     </Container>
   )
 }

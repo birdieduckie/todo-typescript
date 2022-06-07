@@ -1,29 +1,43 @@
-import { useState } from "react"
-import { Button } from "../../shared/Button/Button"
+import { ChangeEvent, FC, useState } from 'react'
+
+import { addTask } from '../../store/reducers/tasksSlice'
+import { useAppDispatch } from '../../hooks/store'
+
+import { Button } from '../../shared/Button/Button'
+
 import { Container, Field } from './styled'
 
-export const Control = ({ handleSetTask }) => {
+interface ControlProps {}
+
+export const Control: FC<ControlProps> = () => {
+  const dispatch = useAppDispatch()
+
   const [inputValue, setInputValue] = useState('')
 
-  // const handleSetInputValue = (event) => {
-  //   setInputValue(event.target.value)
-  // }
-
-  const setTask = () => {
-    handleSetTask(inputValue);
-    setInputValue('')
+  const handleSetInputValue = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value)
   }
 
-  const handleEnter = (event) => {
+  const setTask = () => dispatch(addTask(inputValue))
+
+  const handleEnter = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       setTask()
+      setInputValue('')
     }
   }
 
   return (
     <Container>
-      <Field placeholder='Введите задачу' value={inputValue} onChange={(event) => setInputValue} onKeyDown={handleEnter} />
-      <Button type='primary' onClick={setTask}>Сохранить</Button>
+      <Field
+        placeholder="Введите задачу"
+        onChange={handleSetInputValue}
+        value={inputValue}
+        onKeyDown={handleEnter}
+      />
+      <Button type='button' onClick={setTask}>
+        Сохранить
+      </Button>
     </Container>
   )
 }

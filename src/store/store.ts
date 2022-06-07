@@ -1,15 +1,14 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import taskReducer from "./reducers/tasksSlice";
+import taskReducer from './reducers/tasksSlice'
 
-const rootReducer = combineReducers ({
-  taskReducer
+const rootReducer = combineReducers({
+  tasks: taskReducer,
 })
 
 export const store = configureStore({
-    reducer: rootReducer
-  })
-
+  reducer: rootReducer,
+})
 
 export type RootState = ReturnType<typeof store.getState>
 

@@ -9,7 +9,7 @@ export const StyledButton = styled.button`
   font-size: 15px;
   cursor: pointer;
 
-  ${p => p.type === 'primary' && css`
+  ${p => p.type === 'button' && css`
     background: #4375F8;
     &:hover {
       background: #2156E4;      
@@ -20,7 +20,7 @@ export const StyledButton = styled.button`
     }
   `};
 
-  ${p => p.type === 'danger' && css`
+  ${p => p.type === 'reset' && css`
     background: #F9674E;
     &:hover {
       background: #F45034;
