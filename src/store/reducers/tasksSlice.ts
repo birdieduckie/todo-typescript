@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit'
 import { Task } from '../../components/Task/Task'
 
 export interface Task {
-  id: number | string
+  id: string
   text: string
   checked: boolean
 }
@@ -20,21 +20,14 @@ export const taskSlice = createSlice({
         state.push(action.payload)
       },
     },
-    // toggleTask: {
-    //   prepare: (id: Task['id']) => {
-    //     return { payload: id } }
-    //   }
-    //   reducer: (action: PayloadAction<Task>) => {
-    //   Task[id] === action.payload.id ? Task.checked !== Task.checked
-    // },
-    deleteTask(state, action: PayloadAction<Task['id']>) {
-      const filteredState = state.filter(
-        ({ id, text, checked }) => id !== action.payload
+    toggleTask: (state, action: PayloadAction<Task['id']>) => {
+      return state.map((task) =>
+        task.id === action.payload ? { ...task, checked: !task.checked } : task
       )
-      console.log(filteredState)
-      console.log(action.payload)
     },
-
+    deleteTask(state, action: PayloadAction<Task['id']>) {
+      return state.filter((task) => task.id !== action.payload)
+    },
     setTasks(state, action: PayloadAction<Task[]>) {
       return action.payload
     },
@@ -43,6 +36,6 @@ export const taskSlice = createSlice({
 
 const { actions, reducer } = taskSlice
 
-export const { addTask, deleteTask, setTasks } = actions
+export const { addTask, toggleTask, deleteTask, setTasks } = actions
 
 export default taskSlice.reducer
