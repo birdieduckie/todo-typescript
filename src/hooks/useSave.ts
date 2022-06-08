@@ -13,7 +13,7 @@ export const useSave = <T>(
   useEffect(() => {
     const loadedItems = JSON.parse(localStorage.getItem(name) as string) ?? []
 
-    if (items.length === 0 && loadedItems.length > 0) {
+    if (items.length === 0 && loadedItems.length > 1) {
       dispatch(onSetAction(loadedItems))
 
       return
