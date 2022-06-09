@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { idText } from 'typescript'
 
 import { useAppDispatch } from '../../hooks/store'
 import { deleteTask, toggleTask } from '../../store/reducers/tasksSlice'

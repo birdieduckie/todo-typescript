@@ -18,8 +18,11 @@ export const Control: FC<ControlProps> = () => {
     setInputValue(event.target.value)
   }
 
-  const setTask = () => dispatch(addTask(inputValue))
-
+  const setTask = () => {
+    if (inputValue.trim() !== '') {
+      dispatch(addTask(inputValue))
+    }
+  }
   const handleEnter = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       setTask()
@@ -35,7 +38,7 @@ export const Control: FC<ControlProps> = () => {
         value={inputValue}
         onKeyDown={handleEnter}
       />
-      <Button type='button' onClick={setTask}>
+      <Button type="button" onClick={setTask}>
         Сохранить
       </Button>
     </Container>

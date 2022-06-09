@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, nanoid, current } from '@reduxjs/toolkit'
 import { Task } from '../../components/Task/Task'
 
 export interface Task {
@@ -29,7 +29,7 @@ export const taskSlice = createSlice({
       return state.filter((task) => task.id !== action.payload)
     },
     setTasks(state, action: PayloadAction<Task[]>) {
-      return action.payload
+      state = action.payload
     },
   },
 })

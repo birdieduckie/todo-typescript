@@ -17,7 +17,6 @@ export const Tasks: FC<TasksProps> = () => {
   const tasks = useAppSelector((state) => state.tasks)
 
   useSave<TaskType>(tasks, TASKS_NAME, setTasks)
-
   return (
     <Container>
       {tasks.map((task) => (
