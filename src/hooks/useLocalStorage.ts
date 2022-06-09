@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { useAppDispatch } from './store'
 
-export const useSave = <T>(
+export const useLocalStorage = <T>(
   items: T[],
   name: string,
   onSetAction: (items: T[]) => AnyAction
@@ -13,12 +13,10 @@ export const useSave = <T>(
   useEffect(() => {
     const loadedItems = JSON.parse(localStorage.getItem(name) as string) ?? []
 
-    if (items.length === 0 && loadedItems.length > 1) {
+    if (items.length === 0 && loadedItems.length > 0) {
       dispatch(onSetAction(loadedItems))
 
       return
     }
-
-    localStorage.setItem(name, JSON.stringify(items))
   }, [items])
 }

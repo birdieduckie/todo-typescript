@@ -16,9 +16,10 @@ export const Task: FC<TaskProps> = ({ id, text, checked }) => {
 
   const handleDeleteTask = () => dispatch(deleteTask(id))
   const handleToggleTask = () => dispatch(toggleTask(id))
+
   return (
     <Container>
-      <Check type="checkbox" onClick={handleToggleTask} />
+      <Check type="checkbox" checked={checked} onChange={handleToggleTask} />
       <Text>{text}</Text>
       <Close type="reset" onClick={handleDeleteTask}>
         Удалить
